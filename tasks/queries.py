@@ -7,7 +7,7 @@ def get_internal_projects_total_cost() -> float:
     """
     TODO: Implement this function to return the total cost of internal projects.
 
-    Total cost of a project is the sum of `project.production_cost` and`project.maintanance_cost` field values.
+    Total cost of an internal project is the sum of `project.production_cost` and`project.maintanance_cost` field values.
     """
     return 0.0
 

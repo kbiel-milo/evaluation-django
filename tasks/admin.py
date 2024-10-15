@@ -4,7 +4,7 @@ from django.contrib import admin
 
 @admin.register(InternalProject)
 class InternalProjectAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+    list_display = ("name", "production_cost", "maintanance_cost")
 
 
 @admin.register(ExternalProject)

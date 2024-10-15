@@ -8,6 +8,8 @@ from tasks.queries import (
 from django.db.models import QuerySet
 import warnings
 
+from django.db.utils import IntegrityError
+
 
 def internal_project_factory(
     *,
@@ -24,8 +26,11 @@ def external_project_factory(
     *,
     name: str,
     client_name: str,
+    deleted: bool = False,
 ) -> ExternalProject:
-    return ExternalProject.objects.create(name=name, client_name=client_name)
+    return ExternalProject.objects.create(
+        name=name, client_name=client_name, deleted=deleted
+    )
 
 
 class TestGetAllProjectsTotalCost(TestCase):
@@ -79,3 +84,13 @@ class TestGetAllProjects(TestCase):
 
         if not isinstance(projects, QuerySet):
             warnings.warn("Bonus points await for returning a queryset :)")
+
+
+class TestExternalProjectModel(TestCase):
+    def test_should_be_unique(self):
+        external_project_factory(name="Project A", client_name="Client A")
+        external_project_factory(name="Project A", client_name="Client A", deleted=True)
+        external_project_factory(name="Project A", client_name="Client B")
+
+        with self.assertRaises(IntegrityError):
+            external_project_factory(name="Project A", client_name="Client A")
