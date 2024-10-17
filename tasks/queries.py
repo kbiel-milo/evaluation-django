@@ -1,6 +1,8 @@
 from typing import TypedDict
-from tasks.models import InternalProject, ExternalProject
+
 from django.db.models import TextChoices
+
+from tasks.models import ExternalProject, InternalProject
 
 
 def get_internal_projects_total_cost() -> float:

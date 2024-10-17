@@ -1,0 +1,65 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$xBTYTYbBW1jtM6LjPBHUZ7$YXIFiX55hYh94CQGOdNFIr5ptdx+J8wTe1wemtwlI5M=",
+        "last_login": "2024-10-17T07:02:06.493Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@example.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-10-17T06:59:01.662Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "tasks.internalproject",
+    "pk": 1,
+    "fields": {
+        "name": "Internal project 1",
+        "production_cost": 20000.0,
+        "maintanance_cost": 1000.0
+    }
+},
+{
+    "model": "tasks.internalprojecttask",
+    "pk": 1,
+    "fields": {
+        "project": 1,
+        "name": "Internal project 1 task 1",
+        "completed": false
+    }
+},
+{
+    "model": "tasks.internalprojecttask",
+    "pk": 2,
+    "fields": {
+        "project": 1,
+        "name": "Internal project 1 task 2",
+        "completed": true
+    }
+},
+{
+    "model": "tasks.internalprojecttask",
+    "pk": 3,
+    "fields": {
+        "project": 1,
+        "name": "Internal project 1 task 3",
+        "completed": false
+    }
+},
+{
+    "model": "tasks.externalproject",
+    "pk": 1,
+    "fields": {
+        "name": "External project 1",
+        "client_name": "External project 1 client 1",
+        "deleted": false
+    }
+}
+]

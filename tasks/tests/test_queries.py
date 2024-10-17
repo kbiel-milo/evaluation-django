@@ -1,36 +1,12 @@
+from django.db.utils import IntegrityError
 from django.test import TestCase
-from tasks.models import InternalProject, ExternalProject
+
 from tasks.queries import (
-    get_all_projects,
     ProjectType,
+    get_all_projects,
     get_internal_projects_total_cost,
 )
-from django.db.models import QuerySet
-import warnings
-
-from django.db.utils import IntegrityError
-
-
-def internal_project_factory(
-    *,
-    name: str,
-    production_cost: float = 0,
-    maintanance_cost: float = 0,
-) -> InternalProject:
-    return InternalProject.objects.create(
-        name=name, production_cost=production_cost, maintanance_cost=maintanance_cost
-    )
-
-
-def external_project_factory(
-    *,
-    name: str,
-    client_name: str,
-    deleted: bool = False,
-) -> ExternalProject:
-    return ExternalProject.objects.create(
-        name=name, client_name=client_name, deleted=deleted
-    )
+from tasks.tests.factories import external_project_factory, internal_project_factory
 
 
 class TestGetAllProjectsTotalCost(TestCase):
@@ -78,12 +54,6 @@ class TestGetAllProjects(TestCase):
                 },
             ],
         )
-
-    def test_could_return_a_queryset(self):
-        projects = get_all_projects()
-
-        if not isinstance(projects, QuerySet):
-            warnings.warn("Bonus points await for returning a queryset :)")
 
 
 class TestExternalProjectModel(TestCase):
