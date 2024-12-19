@@ -5,12 +5,13 @@ from django.db.models import TextChoices
 from tasks.models import ExternalProject, InternalProject
 
 
-def get_internal_projects_total_cost() -> float:
+def get_average_internal_project_cost() -> float:
     """
-    TODO: Implement this function to return the total cost of internal projects.
+    TODO: Implement this function to return the average cost of internal projects.
 
-    Total cost of an internal project is the sum of `project.production_cost` and`project.maintanance_cost` field values.
+    Internal project cost is a sum of production cost and maintenance cost.
     """
+
     return 0.0
 
 
